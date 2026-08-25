@@ -14,16 +14,7 @@ class CashfreeSignature
                      "X3PfQDV/i4TDMPEUxK+gZge1j2Y2Sz229krLJwV9kjUWRnDf5v9y0YIHof8pbgbP\n" .
                      "6dsnOTbq1jSd2HqKj3Z4T5ctNTkcWGNUzRi7SMNaE4aNaX5L2X2O289DSUGhkq4U\n" .
                      "1wIDAQAB\n" .
-                     "-----END PUBLIC KEY-----";
-        /* $publicKey = "-----BEGIN PUBLIC KEY-----\n" .
-            "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAntwCWleFeJRprVCSaCBu\n" .
-            "5+oXcXmtmGq8nIKFrkD4mxd94tNk8gogL2YyCjBEllOIuMWOcKgL87WsW8Zti0oR\n" .
-            "uL07KgknbNgaKXHHI7T0GjQ+N2nuSyGPEeQ85HXumCc70O5HRwxEYqOaXxfmFLXh\n" .
-            "/vMnNiev8gnI9UXZP5XcLP5KWYcTkiGSa9wipUQGqznJM3MbT17+CBn+f6mhldCV\n" .
-            "DMpLT+xfKcBPMhuN9LLOBFz1TE/bDrC+cktN4p/ldGj+oenctUvdzaqkR+W/HP9l\n" .
-            "/h884iZeT/IctK7PSIMJwiTyr7YbmLgWn4nElKXqMp9H3LMtnkBSEbfssNPzItl/\n" .
-            "XQIDAQAB\n" .
-            "-----END PUBLIC KEY-----"; */
+                     "-----END PUBLIC KEY-----";// test key
 
         return static::encrypt_RSA($encodedData, $publicKey);
     }
@@ -52,7 +43,6 @@ $verificationId = generateVerificationId();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['front_image'], $_FILES['back_image'])) {
     $clientId = 'CF10092474CSJIJ7JD133S7397FAEG'; // Test
-    // $clientId = 'CF601003CSN5P4V5LTGS73CU27UG'; // Prod
     $xCfSignature = CashfreeSignature::getSignature($clientId);
 
     // back image
@@ -104,7 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['front_image'], $_FIL
                 'x-cf-signature' => $xCfSignature,
                 'x-client-id' => $clientId,
                 'x-client-secret' => 'cfsk_ma_test_06746ffb8d6398aa5943042f8766595e_970b9fcc', // Test
-                // 'x-client-secret' => 'cfsk_ma_prod_a6e556719c0f44785b8a02313a904664_69bfc527', // Prod
             ],
         ]);
 
